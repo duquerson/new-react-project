@@ -36,6 +36,7 @@ const Step4 = ({ nextStep, prevStep, handleChange, values }) => {
             <button
               onClick={() => handleChange('step')({ target: { value: 2 } })} // Allows changing plan
               className="text-cool-gray text-sm underline hover:text-purplish-blue"
+              aria-label="Change plan"
             >
               Change
             </button>

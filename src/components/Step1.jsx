@@ -16,6 +16,7 @@ const Step1 = ({ nextStep, handleChange, values }) => {
           className="w-full p-2 border border-light-gray rounded-md focus:outline-none focus:ring-1 focus:ring-purplish-blue"
           onChange={handleChange('name')}
           defaultValue={values.name}
+          required
         />
       </div>
 
@@ -29,6 +30,7 @@ const Step1 = ({ nextStep, handleChange, values }) => {
           className="w-full p-2 border border-light-gray rounded-md focus:outline-none focus:ring-1 focus:ring-purplish-blue"
           onChange={handleChange('email')}
           defaultValue={values.email}
+          required
         />
       </div>
 
@@ -42,6 +44,7 @@ const Step1 = ({ nextStep, handleChange, values }) => {
           className="w-full p-2 border border-light-gray rounded-md focus:outline-none focus:ring-1 focus:ring-purplish-blue"
           onChange={handleChange('phone')}
           defaultValue={values.phone}
+          required
         />
       </div>
 

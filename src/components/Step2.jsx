@@ -88,6 +88,7 @@ const Step2 = ({ nextStep, prevStep, handleChange, values }) => {
             type="checkbox"
             id="billingToggle"
             className="sr-only peer"
+            aria-label="Toggle for monthly or yearly billing"
             checked={values.yearly}
             onChange={() => handleChange('yearly')({ target: { value: !values.yearly } })}
           />
