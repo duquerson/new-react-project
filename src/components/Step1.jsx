@@ -2,7 +2,7 @@ import React from 'react';
 
 const Step1 = ({ nextStep, handleChange, values }) => {
   return (
-    <div className="flex flex-col">
+    <section className="flex flex-col">
       <h2 className="text-marine-blue text-2xl font-bold mb-2">Personal info</h2>
       <p className="text-cool-gray mb-6">Please provide your name, email address, and phone number.</p>
 
@@ -53,7 +53,7 @@ const Step1 = ({ nextStep, handleChange, values }) => {
           Next Step
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 

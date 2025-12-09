@@ -5,11 +5,13 @@ import IconPro from '../assets/images/icon-pro.svg';
 
 const Step2 = ({ nextStep, prevStep, handleChange, values }) => {
   return (
-    <div className="flex flex-col">
-      <h2 className="text-marine-blue text-2xl font-bold mb-2">Select your plan</h2>
-      <p className="text-cool-gray mb-6">You have the option of monthly or yearly billing.</p>
+    <section className="flex flex-col">
+      <fieldset className="flex flex-col">
+        <legend className="sr-only">Select your plan</legend> {/* Visually hidden legend */}
+        <h2 className="text-marine-blue text-2xl font-bold mb-2">Select your plan</h2>
+        <p className="text-cool-gray mb-6">You have the option of monthly or yearly billing.</p>
 
-      <div className="flex flex-col md:flex-row gap-4 mb-6">
+        <div className="flex flex-col md:flex-row gap-4 mb-6">
         {/* Arcade Plan Card */}
         <label
           htmlFor="arcade"
@@ -76,6 +78,7 @@ const Step2 = ({ nextStep, prevStep, handleChange, values }) => {
           </div>
         </label>
       </div>
+      </fieldset>
 
       {/* Monthly/Yearly Toggle */}
       <div className="bg-alabaster p-3 rounded-md flex items-center justify-center gap-6 mb-8">
@@ -108,7 +111,7 @@ const Step2 = ({ nextStep, prevStep, handleChange, values }) => {
           Next Step
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 

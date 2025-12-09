@@ -25,11 +25,11 @@ const Step4 = ({ nextStep, prevStep, handleChange, values }) => {
   const total = selectedPlanPrice + totalAddOnPrice;
 
   return (
-    <div className="flex flex-col">
+    <section className="flex flex-col">
       <h2 className="text-marine-blue text-2xl font-bold mb-2">Finishing up</h2>
       <p className="text-cool-gray mb-6">Double-check everything looks OK before confirming.</p>
 
-      <div className="bg-alabaster rounded-md p-4 mb-6">
+      <article className="bg-alabaster rounded-md p-4 mb-6">
         <div className="flex items-center justify-between pb-4 border-b border-light-gray">
           <div>
             <h3 className="text-marine-blue font-bold">{values.plan} ({values.yearly ? 'Yearly' : 'Monthly'})</h3>
@@ -46,21 +46,21 @@ const Step4 = ({ nextStep, prevStep, handleChange, values }) => {
         </div>
 
         {values.addOns.length > 0 && (
-          <div className="pt-4">
+          <ul className="pt-4">
             {values.addOns.map((addOnId) => {
               const addOn = addOnsDetails.find((a) => a.id === addOnId);
               return (
-                <div key={addOnId} className="flex justify-between items-center mb-2">
+                <li key={addOnId} className="flex justify-between items-center mb-2">
                   <span className="text-cool-gray text-sm">{addOn.title}</span>
                   <span className="text-marine-blue text-sm">
                     +${values.yearly ? addOn.priceYearly : addOn.priceMonthly}/{values.yearly ? 'yr' : 'mo'}
                   </span>
-                </div>
+                </li>
               );
             })}
-          </div>
+          </ul>
         )}
-      </div>
+      </article>
 
       <div className="flex justify-between items-center p-4">
         <span className="text-cool-gray">Total (per {values.yearly ? 'year' : 'month'})</span>
@@ -84,7 +84,7 @@ const Step4 = ({ nextStep, prevStep, handleChange, values }) => {
           Confirm
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 

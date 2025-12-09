@@ -73,12 +73,12 @@ const MultiStepForm = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-magnolia p-4">
-      <div className="bg-white rounded-lg shadow-xl p-6 md:flex md:w-3/4 lg:w-1/2">
+      <form className="bg-white rounded-lg shadow-xl p-6 md:flex md:w-3/4 lg:w-1/2">
         {/* Sidebar/Step Indicator will go here later */}
         <div className="flex-1 p-4">
           {renderStep()}
         </div>
-      </div>
+      </form>
     </div>
   );
 };

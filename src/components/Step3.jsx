@@ -26,11 +26,13 @@ const Step3 = ({ nextStep, prevStep, handleChange, values }) => {
   ];
 
   return (
-    <div className="flex flex-col">
-      <h2 className="text-marine-blue text-2xl font-bold mb-2">Pick add-ons</h2>
-      <p className="text-cool-gray mb-6">Add-ons enhance your gaming experience.</p>
+    <section className="flex flex-col">
+      <fieldset className="flex flex-col">
+        <legend className="sr-only">Pick add-ons</legend> {/* Visually hidden legend */}
+        <h2 className="text-marine-blue text-2xl font-bold mb-2">Pick add-ons</h2>
+        <p className="text-cool-gray mb-6">Add-ons enhance your gaming experience.</p>
 
-      <div className="flex flex-col gap-4 mb-8">
+        <div className="flex flex-col gap-4 mb-8">
         {addOns.map((addOn) => (
           <label
             key={addOn.id}
@@ -63,6 +65,7 @@ const Step3 = ({ nextStep, prevStep, handleChange, values }) => {
           </label>
         ))}
       </div>
+      </fieldset>
 
       {/* Navigation Buttons */}
       <div className="flex justify-between mt-auto">
@@ -79,7 +82,7 @@ const Step3 = ({ nextStep, prevStep, handleChange, values }) => {
           Next Step
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 

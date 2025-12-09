@@ -4,7 +4,9 @@ import MultiStepForm from './components/MultiStepForm';
 
 const App = () => {
 	return (
-		<MultiStepForm />
+		<main>
+			<MultiStepForm />
+		</main>
 	)
 }
 
