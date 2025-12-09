@@ -24,3 +24,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Reference files
+/design/
+/style-guide.md
+/README-template.md
+/index1.html
