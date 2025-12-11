@@ -1,12 +1,16 @@
 import React from 'react';
-import { useMultiStepFormContext } from '../context/MultiStepFormContext';
+import { useFormContext } from 'react-hook-form';
+import useFormStore from '../store/formStore';
 
-const Step4 = () => { // No props needed now
-  const { goToNextStep, goToPrevStep, goToStep, currentValues, handleFieldChange } = useMultiStepFormContext();
+const Step4 = () => {
+  const { watch } = useFormContext();
+  const { goToStep } = useFormStore();
+  const currentValues = watch();
+
   const planDetails = {
-    arcade: { monthly: 9, yearly: 90 },
-    advanced: { monthly: 12, yearly: 120 },
-    pro: { monthly: 15, yearly: 150 },
+    arcade: { monthly: 9, yearly: 90, title: 'Arcade' },
+    advanced: { monthly: 12, yearly: 120, title: 'Advanced' },
+    pro: { monthly: 15, yearly: 150, title: 'Pro' },
   };
 
   const addOnsDetails = [
@@ -19,8 +23,9 @@ const Step4 = () => { // No props needed now
     ? planDetails[currentValues.plan].yearly
     : planDetails[currentValues.plan].monthly;
 
-  const totalAddOnPrice = currentValues.addOns.reduce((sum, addOnId) => {
+  const totalAddOnPrice = (currentValues.addOns || []).reduce((sum, addOnId) => {
     const addOn = addOnsDetails.find((a) => a.id === addOnId);
+    if (!addOn) return sum;
     return sum + (currentValues.yearly ? addOn.priceYearly : addOn.priceMonthly);
   }, 0);
 
@@ -34,9 +39,10 @@ const Step4 = () => { // No props needed now
       <article className="bg-alabaster rounded-md p-4 mb-6">
         <div className="flex items-center justify-between pb-4 border-b border-light-gray">
           <div>
-            <h3 className="text-marine-blue font-bold">{currentValues.plan} ({currentValues.yearly ? 'Yearly' : 'Monthly'})</h3>
+            <h3 className="text-marine-blue font-bold">{planDetails[currentValues.plan].title} ({currentValues.yearly ? 'Yearly' : 'Monthly'})</h3>
             <button
-              onClick={() => goToStep(2)} // Allows changing plan directly
+              type="button"
+              onClick={() => goToStep(2)}
               className="text-cool-gray text-sm underline hover:text-purplish-blue"
               aria-label="Change plan"
             >
@@ -48,10 +54,11 @@ const Step4 = () => { // No props needed now
           </span>
         </div>
 
-        {currentValues.addOns.length > 0 && (
+        {currentValues.addOns && currentValues.addOns.length > 0 && (
           <ul className="pt-4">
             {currentValues.addOns.map((addOnId) => {
               const addOn = addOnsDetails.find((a) => a.id === addOnId);
+              if (!addOn) return null;
               return (
                 <li key={addOnId} className="flex justify-between items-center mb-2">
                   <span className="text-cool-gray text-sm">{addOn.title}</span>
@@ -70,22 +77,6 @@ const Step4 = () => { // No props needed now
         <span className="text-purplish-blue text-xl font-bold">
           ${total}/{currentValues.yearly ? 'yr' : 'mo'}
         </span>
-      </div>
-
-      {/* Navigation Buttons */}
-      <div className="flex justify-between mt-auto">
-        <button
-          onClick={goToPrevStep}
-          className="text-cool-gray py-2 px-4 rounded-md hover:text-marine-blue transition-colors duration-200"
-        >
-          Go Back
-        </button>
-        <button
-          onClick={goToNextStep}
-          className="bg-purplish-blue text-white py-2 px-4 rounded-md hover:bg-pastel-blue transition-colors duration-200"
-        >
-          Confirm
-        </button>
       </div>
     </section>
   );
