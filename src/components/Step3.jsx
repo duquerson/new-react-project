@@ -35,7 +35,7 @@ const Step3 = () => {
 		<section className="flex flex-col">
 			<fieldset className="flex flex-col">
 				<legend className="sr-only">Pick add-ons</legend>
-				<h2 className="text-marine-blue mb-2 text-2xl font-bold">Pick add-ons</h2>
+				<h1 className="text-marine-blue mb-2 text-2xl font-bold">Pick add-ons</h1>
 				<p className="text-cool-gray mb-6">Add-ons enhance your gaming experience.</p>
 
 				<div className="mb-8 flex flex-col gap-4">

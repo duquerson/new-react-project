@@ -16,7 +16,7 @@ const Step2 = () => {
 		<section className="flex flex-col">
 			<fieldset className="flex flex-col">
 				<legend className="sr-only">Select your plan</legend>
-				<h2 className="text-marine-blue mb-2 text-2xl font-bold">Select your plan</h2>
+				<h1 className="text-marine-blue mb-2 text-2xl font-bold">Select your plan</h1>
 				<p className="text-cool-gray mb-6">You have the option of monthly or yearly billing.</p>
 
 				<div className="mb-6 flex flex-col gap-4 md:flex-row">
@@ -29,7 +29,7 @@ const Step2 = () => {
 							id="arcade"
 							value="arcade"
 							className="hidden"
-							{...register('plan', { required: 'Please select a plan' })}
+							{...register('plan')}
 						/>
 						<img
 							src={IconArcade}
@@ -52,7 +52,7 @@ const Step2 = () => {
 							id="advanced"
 							value="advanced"
 							className="hidden"
-							{...register('plan', { required: 'Please select a plan' })}
+							{...register('plan')}
 						/>
 						<img
 							src={IconAdvanced}
@@ -75,7 +75,7 @@ const Step2 = () => {
 							id="pro"
 							value="pro"
 							className="hidden"
-							{...register('plan', { required: 'Please select a plan' })}
+							{...register('plan')}
 						/>
 						<img src={IconPro} alt="Pro Icon" className="mr-4 mb-8 h-10 w-10 md:mr-0 md:mb-10" />
 						<div>

@@ -33,7 +33,7 @@ const Step4 = () => {
 
 	return (
 		<section className="flex flex-col">
-			<h2 className="text-marine-blue mb-2 text-2xl font-bold">Finishing up</h2>
+			<h1 className="text-marine-blue mb-2 text-2xl font-bold">Finishing up</h1>
 			<p className="text-cool-gray mb-6">Double-check everything looks OK before confirming.</p>
 
 			<article className="bg-alabaster mb-6 rounded-md p-4">

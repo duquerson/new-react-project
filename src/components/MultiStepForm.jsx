@@ -1,5 +1,7 @@
 import React from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { schema } from '../lib/schema';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
@@ -15,6 +17,7 @@ const MultiStepForm = () => {
 	const { currentStep, goToNextStep } = useFormStore();
 
 	const methods = useForm({
+		resolver: zodResolver(schema),
 		mode: 'onTouched',
 		defaultValues: {
 			name: '',
@@ -64,7 +67,7 @@ const MultiStepForm = () => {
 				{/* The form needs to span the full height on mobile to contain the sticky footer */}
 				<form onSubmit={methods.handleSubmit(onSubmit)} className="flex h-full flex-col md:h-auto">
 					{/* Main content area that holds the card */}
-					<main className="flex-grow md:flex-grow-0">
+					<div className="flex-grow md:flex-grow-0">
 						<div className="relative mx-4 mt-28 md:mx-0 md:mt-0">
 							<div className="rounded-lg bg-white shadow-xl md:flex md:w-[940px] md:p-4">
 								{/* Desktop Sidebar */}
@@ -92,13 +95,13 @@ const MultiStepForm = () => {
 								</div>
 							</div>
 						</div>
-					</main>
+					</div>
 
 					{/* Mobile Navigation */}
 					{currentStep < 5 && (
-						<div className="fixed bottom-0 left-0 w-full bg-white p-4 shadow-lg md:hidden">
+						<footer className="fixed bottom-0 left-0 w-full bg-white p-4 shadow-lg md:hidden">
 							<Navigation />
-						</div>
+						</footer>
 					)}
 				</form>
 			</FormProvider>

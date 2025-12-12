@@ -7,20 +7,15 @@ const Navigation = () => {
 	const { trigger } = useFormContext();
 
 	const handleNext = async () => {
-		let fieldsToValidate = [];
-		if (currentStep === 1) {
-			fieldsToValidate = ['name', 'email', 'phone'];
-		} else if (currentStep === 2) {
-			fieldsToValidate = ['plan'];
-		}
+		const fieldsToValidate = {
+			1: ['name', 'email', 'phone'],
+			2: ['plan'],
+			3: [],
+		}[currentStep];
 
-		if (fieldsToValidate.length > 0) {
-			const isValid = await trigger(fieldsToValidate);
-			if (isValid) {
-				goToNextStep();
-			}
-		} else {
-			goToNextStep(); // For Step 3 which has no validation
+		const isValid = await trigger(fieldsToValidate);
+		if (isValid) {
+			goToNextStep();
 		}
 	};
 
@@ -37,8 +32,8 @@ const Navigation = () => {
 				</button>
 			)}
 
-			{/* "Next Step" button: shown on steps 1, 2, 3 */}
-			{currentStep < 4 && (
+			{/* "Next Step" / "Confirm" button */}
+			{currentStep < 4 ? (
 				<button
 					type="button"
 					onClick={handleNext}
@@ -46,10 +41,7 @@ const Navigation = () => {
 				>
 					Next Step
 				</button>
-			)}
-
-			{/* "Confirm" button: shown only on step 4 */}
-			{currentStep === 4 && (
+			) : (
 				<button
 					type="submit"
 					className="bg-purplish-blue hover:bg-pastel-blue rounded-lg px-6 py-3 text-white transition-colors duration-200"
